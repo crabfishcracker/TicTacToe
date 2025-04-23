@@ -129,7 +129,7 @@ void RenderGameBoard()
     Console.WriteLine("  Let's play");
     Console.WriteLine("  [ TIC TAC TOE ]");
     Console.WriteLine();
-    Console.WriteLine("   | 1 | 2 | 3 | <-(X)");
+    Console.WriteLine("   | 1 | 2 | 3 | <-(column)");
     Console.WriteLine(" ---------------");
 
     for (int y = 0; y < 3; y++)
@@ -143,9 +143,13 @@ void RenderGameBoard()
                 {
                     Console.WriteLine($"   |");
                 }
-                else
+                else if (board[x, y] == 1)
                 {
-                    Console.WriteLine($" {board[x, y]} |");
+                    Console.WriteLine($" X |");
+                }
+                else if (board[x, y] == 2)
+                {
+                    Console.WriteLine($" O |");
                 }
                 Console.WriteLine(" ---------------");
             }
@@ -155,15 +159,19 @@ void RenderGameBoard()
                 {
                     Console.Write($"   |");
                 }
-                else
+                else if (board[x, y] == 1)
                 {
-                    Console.Write($" {board[x, y]} |");
+                    Console.Write($" X |");
+                }
+                else if (board[x, y] == 2)
+                {
+                    Console.Write($" O |");
                 }
             }
         }
     }
 
-    Console.WriteLine("(Y)");
+    Console.WriteLine("(row)");
     Console.WriteLine();
 }
 
@@ -177,7 +185,7 @@ void PlayerInput(int player)
         int posX = 0;
         while (true)
         {
-            Console.WriteLine("Enter position X (column): ");
+            Console.WriteLine("Enter column: ");
             input = Console.ReadLine();
             bool inputIsOk = false;
             if (input != null)
@@ -198,7 +206,7 @@ void PlayerInput(int player)
         int posY = 0;
         while (true)
         {
-            Console.WriteLine("Enter position Y (row): ");
+            Console.WriteLine("Enter row: ");
             input = Console.ReadLine();
             bool inputIsOk = false;
             if (input != null)
